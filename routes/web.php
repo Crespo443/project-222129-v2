@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EmailVerificationController;
@@ -23,4 +24,9 @@ Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 've
 Route::post('/logout', [LoginController::class, 'processLogout']);
 
 Route::get('/home', [MenuController::class, 'showHomePage']);
+
+Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
+Route::get('/cars/search', [CarController::class, 'search'])->name('cars.search');
+Route::get('/cars/{car}', [CarController::class, 'show'])->name('cars.show');
+
 Route::get('/admin/dashboard', [MenuController::class, 'showAdminDashboard']);
